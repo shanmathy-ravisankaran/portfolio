@@ -3,438 +3,789 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shanmathy Ravisankaran | Data Engineer & Data Analyst</title>
-  <meta name="description" content="Portfolio of Shanmathy Ravisankaran — Data Engineer & Data Analyst. Azure, Databricks, ADF, SQL, Python, Power BI." />
-  <meta property="og:title" content="Shanmathy Ravisankaran | Data Engineer & Data Analyst" />
-  <meta property="og:description" content="Azure • Databricks • ADF • SQL • Python • Power BI" />
+  <title>Shanmathy Ravisankaran | Data Engineer & Developer</title>
+  <meta
+    name="description"
+    content="Portfolio of Shanmathy Ravisankaran, a data engineer and developer building reliable platforms, analytics systems, and production-ready data workflows."
+  />
+  <meta property="og:title" content="Shanmathy Ravisankaran | Data Engineer & Developer" />
+  <meta
+    property="og:description"
+    content="Azure, Databricks, Python, SQL, Power BI, and applied AI projects."
+  />
   <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: "class",
       theme: {
         extend: {
           boxShadow: {
-            soft: "0 10px 30px rgba(0,0,0,0.08)"
-          }
-        }
+            panel: "0 24px 60px rgba(15, 23, 42, 0.16)",
+          },
+          colors: {
+            ink: {
+              50: "#f6f7fb",
+              100: "#ebeef5",
+              200: "#d1d8e6",
+              700: "#34415c",
+              800: "#1f293d",
+              900: "#0f172a",
+            },
+            accent: {
+              300: "#f7b267",
+              400: "#ef8f41",
+              500: "#db6c1b",
+            },
+          },
+          animation: {
+            "fade-up": "fadeUp 700ms ease forwards",
+            float: "float 6s ease-in-out infinite",
+          },
+          keyframes: {
+            fadeUp: {
+              "0%": { opacity: "0", transform: "translateY(18px)" },
+              "100%": { opacity: "1", transform: "translateY(0)" },
+            },
+            float: {
+              "0%, 100%": { transform: "translateY(0px)" },
+              "50%": { transform: "translateY(-10px)" },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <script>
+    (() => {
+      const storedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+        document.documentElement.classList.add("dark");
       }
-    }
+    })();
   </script>
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f3efe7;
+      --bg-muted: rgba(255, 255, 255, 0.6);
+      --panel: rgba(255, 255, 255, 0.74);
+      --panel-strong: rgba(255, 255, 255, 0.92);
+      --text: #111827;
+      --muted: #4b5563;
+      --line: rgba(148, 163, 184, 0.25);
+      --accent: #db6c1b;
+      --accent-soft: rgba(219, 108, 27, 0.12);
+      --glow: radial-gradient(circle at top, rgba(219, 108, 27, 0.18), transparent 38%);
+      --grid: linear-gradient(rgba(17, 24, 39, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 24, 39, 0.05) 1px, transparent 1px);
+    }
+
+    .dark {
+      color-scheme: dark;
+      --bg: #09111d;
+      --bg-muted: rgba(15, 23, 42, 0.5);
+      --panel: rgba(15, 23, 42, 0.72);
+      --panel-strong: rgba(15, 23, 42, 0.9);
+      --text: #f8fafc;
+      --muted: #c7d2e0;
+      --line: rgba(148, 163, 184, 0.18);
+      --accent: #f7b267;
+      --accent-soft: rgba(247, 178, 103, 0.12);
+      --glow: radial-gradient(circle at top, rgba(247, 178, 103, 0.15), transparent 42%);
+      --grid: linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+    }
+
+    body {
+      font-family: "Instrument Sans", sans-serif;
+      background:
+        var(--glow),
+        var(--grid);
+      background-color: var(--bg);
+      background-size: auto, 36px 36px, 36px 36px;
+      color: var(--text);
+    }
+
+    h1, h2, h3, .font-display {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .glass-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .glass-panel-strong {
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .section-label {
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .theme-ready {
+      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal,
+      .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
 </head>
+<body class="theme-ready antialiased">
+  <div class="fixed inset-0 -z-10 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_30%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.06),transparent_28%)]"></div>
 
-<body class="bg-white text-slate-900">
-  <!-- Top Bar -->
-  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-100">
-    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-      <a href="#home" class="font-semibold tracking-tight">Shanmathy</a>
+  <header class="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[color:var(--bg-muted)] backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <a href="#home" class="font-display text-lg font-bold tracking-tight">Shanmathy.dev</a>
 
-      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-600">
-        <a class="hover:text-slate-900" href="#about">About</a>
-        <a class="hover:text-slate-900" href="#experience">Experience</a>
-        <a class="hover:text-slate-900" href="#projects">Projects</a>
-        <a class="hover:text-slate-900" href="#skills">Skills</a>
-        <a class="hover:text-slate-900" href="#contact">Contact</a>
+      <nav class="hidden items-center gap-6 text-sm font-medium text-[color:var(--muted)] md:flex">
+        <a class="transition hover:text-[color:var(--text)]" href="#about">About</a>
+        <a class="transition hover:text-[color:var(--text)]" href="#experience">Experience</a>
+        <a class="transition hover:text-[color:var(--text)]" href="#projects">Projects</a>
+        <a class="transition hover:text-[color:var(--text)]" href="#skills">Skills</a>
+        <a class="transition hover:text-[color:var(--text)]" href="#contact">Contact</a>
       </nav>
 
       <div class="flex items-center gap-2">
-        <a class="hidden sm:inline-flex rounded-xl border border-slate-200 px-3 py-2 text-sm hover:bg-slate-50"
-           href="https://github.com/shanmathy-ravisankaran" target="_blank" rel="noreferrer">
-          GitHub
-        </a>
-        <button id="copyEmailBtn"
-          class="rounded-xl bg-slate-900 text-white px-3 py-2 text-sm hover:opacity-90">
+        <button
+          id="menuToggle"
+          type="button"
+          class="glass-panel rounded-full px-4 py-2 text-sm font-medium text-[color:var(--text)] md:hidden"
+          aria-expanded="false"
+          aria-controls="mobileNav"
+        >
+          Menu
+        </button>
+        <button
+          id="themeToggle"
+          type="button"
+          class="glass-panel rounded-full px-4 py-2 text-sm font-medium text-[color:var(--text)] transition hover:scale-[1.02]"
+          aria-label="Toggle dark and light mode"
+        >
+          <span id="themeToggleLabel">Theme</span>
+        </button>
+        <button
+          id="copyEmailBtn"
+          type="button"
+          class="rounded-full bg-[color:var(--text)] px-4 py-2 text-sm font-semibold text-[color:var(--bg)] transition hover:opacity-90"
+        >
           Copy Email
         </button>
       </div>
     </div>
-  </header>
-
-  <!-- Hero -->
-  <section id="home" class="mx-auto max-w-6xl px-4 pt-12 pb-10">
-    <div class="grid lg:grid-cols-2 gap-10 items-center">
-      <div>
-        <p class="text-sm text-slate-600">Open to roles: Data Engineer • Data Analyst</p>
-        <h1 class="mt-3 text-4xl sm:text-5xl font-semibold tracking-tight">
-          Building reliable pipelines & clean dashboards that teams trust.
-        </h1>
-        <p class="mt-4 text-slate-600 leading-relaxed">
-          I’m <span class="font-medium text-slate-900">Shanmathy Ravisankaran</span> — 2+ years at Accenture with hands-on work across
-          <span class="font-medium text-slate-900">Azure, Databricks, ADF, SQL, Python, and Power BI</span>.
-          I enjoy turning messy data into fast pipelines and decision-ready KPIs.
-        </p>
-
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#projects" class="rounded-xl bg-slate-900 text-white px-4 py-2 text-sm hover:opacity-90">
-            View Projects
-          </a>
-          <a href="#contact" class="rounded-xl border border-slate-200 px-4 py-2 text-sm hover:bg-slate-50">
-            Contact Me
-          </a>
-          <a href="assets/Shanmathy_Ravisankaran_Resume.pdf" class="rounded-xl border border-slate-200 px-4 py-2 text-sm hover:bg-slate-50">
-            Download Resume
-          </a>
-        </div>
-
-        <div class="mt-8 flex flex-wrap gap-2 text-xs">
-          <span class="rounded-full bg-slate-50 border border-slate-200 px-3 py-1">Azure Data Factory</span>
-          <span class="rounded-full bg-slate-50 border border-slate-200 px-3 py-1">Databricks / PySpark</span>
-          <span class="rounded-full bg-slate-50 border border-slate-200 px-3 py-1">SQL (CTEs, Window)</span>
-          <span class="rounded-full bg-slate-50 border border-slate-200 px-3 py-1">Power BI (DAX)</span>
-          <span class="rounded-full bg-slate-50 border border-slate-200 px-3 py-1">Python Automation</span>
+    <div
+      id="mobileNav"
+      class="mx-auto hidden max-w-7xl px-4 pb-4 sm:px-6 lg:px-8 md:hidden"
+    >
+      <div class="glass-panel rounded-[1.5rem] p-4 text-sm font-medium text-[color:var(--muted)]">
+        <div class="flex flex-col gap-3">
+          <a class="transition hover:text-[color:var(--text)]" href="#about">About</a>
+          <a class="transition hover:text-[color:var(--text)]" href="#experience">Experience</a>
+          <a class="transition hover:text-[color:var(--text)]" href="#projects">Projects</a>
+          <a class="transition hover:text-[color:var(--text)]" href="#skills">Skills</a>
+          <a class="transition hover:text-[color:var(--text)]" href="#contact">Contact</a>
         </div>
       </div>
+    </div>
+  </header>
 
-      <!-- Stats Card -->
-      <div class="rounded-2xl border border-slate-200 p-6 shadow-soft">
+  <main>
+    <section id="home" class="mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:px-8 lg:pb-24 lg:pt-20">
+      <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        <div class="reveal space-y-8">
+          <div class="space-y-4">
+            <p class="section-label">Data Engineer + Developer</p>
+            <h1 class="max-w-4xl text-5xl font-bold tracking-tight text-[color:var(--text)] sm:text-6xl lg:text-7xl">
+              Building data products that are fast, stable, and easy to trust.
+            </h1>
+            <p class="max-w-2xl text-lg leading-8 text-[color:var(--muted)]">
+              I am Shanmathy Ravisankaran, a developer with experience across Azure, Databricks,
+              SQL, Python, and Power BI. I design production-minded pipelines, analytics systems,
+              and AI-backed tools that turn raw data into usable decisions.
+            </p>
+          </div>
 
-        <!-- Profile Image (ADDED) -->
-        <div class="flex items-center gap-4 mb-6">
-          <img
-            src="assets/profile.jpg"
-            alt="Shanmathy Ravisankaran profile photo"
-            class="w-40 h-40 sm:w-44 sm:h-44 rounded-2xl object-cover border border-slate-200 shadow-soft"
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="#projects"
+              class="rounded-full bg-[color:var(--accent)] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+            >
+              Explore Projects
+            </a>
+            <a
+              href="assets/Shanmathy%20Ravisankaran_AI%20Engineer.pdf"
+              download
+              class="glass-panel rounded-full px-5 py-3 text-sm font-semibold text-[color:var(--text)] transition hover:-translate-y-0.5"
+            >
+              Download Resume
+            </a>
+            <a
+              href="#contact"
+              class="rounded-full border border-[color:var(--line)] px-5 py-3 text-sm font-semibold text-[color:var(--text)] transition hover:bg-[color:var(--accent-soft)]"
+            >
+              Let&apos;s Connect
+            </a>
+          </div>
 
-          />
-          <div>
-            <p class="text-sm text-slate-600">Data Engineer • Data Analyst</p>
-            <p class="text-base font-semibold">Shanmathy Ravisankaran</p>
+          <div class="grid gap-4 sm:grid-cols-3">
+            <div class="glass-panel rounded-3xl p-5">
+              <p class="text-3xl font-bold text-[color:var(--text)]">2+ Years</p>
+              <p class="mt-2 text-sm text-[color:var(--muted)]">Professional delivery experience at Accenture.</p>
+            </div>
+            <div class="glass-panel rounded-3xl p-5">
+              <p class="text-3xl font-bold text-[color:var(--text)]">10+ Projects</p>
+              <p class="mt-2 text-sm text-[color:var(--muted)]">Portfolio spanning analytics, AI, and full-stack builds.</p>
+            </div>
+            <div class="glass-panel rounded-3xl p-5">
+              <p class="text-3xl font-bold text-[color:var(--text)]">Azure Focus</p>
+              <p class="mt-2 text-sm text-[color:var(--muted)]">ADF, Databricks, Power BI, and cloud data workflows.</p>
+            </div>
           </div>
         </div>
 
-        <h2 class="text-lg font-semibold">Impact Highlights</h2>
+        <div class="reveal lg:justify-self-end">
+          <div class="glass-panel-strong relative overflow-hidden rounded-[2rem] p-6 shadow-panel sm:p-8">
+            <div class="absolute right-6 top-6 h-24 w-24 rounded-full bg-[color:var(--accent-soft)] blur-2xl"></div>
+            <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
+              <img
+                src="assets/profile.jpg"
+                alt="Portrait of Shanmathy Ravisankaran"
+                class="h-32 w-32 rounded-[1.5rem] object-cover ring-1 ring-[color:var(--line)] sm:h-40 sm:w-40"
+              />
+              <div>
+                <p class="text-sm font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">Available for roles</p>
+                <h2 class="mt-2 font-display text-3xl font-bold text-[color:var(--text)]">Data Engineering</h2>
+                <p class="mt-2 text-sm leading-7 text-[color:var(--muted)]">
+                  Open to data engineering, analytics engineering, and developer-facing platform work.
+                </p>
+              </div>
+            </div>
 
-        <div class="mt-4 grid sm:grid-cols-2 gap-4">
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-3xl border border-[color:var(--line)] bg-[color:var(--bg-muted)] p-4">
+                <p class="text-sm font-semibold">Core Stack</p>
+                <p class="mt-2 text-sm text-[color:var(--muted)]">Python, SQL, Databricks, ADF, Power BI, Java</p>
+              </div>
+              <div class="rounded-3xl border border-[color:var(--line)] bg-[color:var(--bg-muted)] p-4">
+                <p class="text-sm font-semibold">Strengths</p>
+                <p class="mt-2 text-sm text-[color:var(--muted)]">Pipeline reliability, reporting quality, and delivery ownership</p>
+              </div>
+            </div>
 
-  <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
-    <p class="text-sm font-semibold">Power BI Dashboards & KPIs</p>
-    <p class="mt-1 text-sm text-slate-600">
-      Designed interactive Power BI dashboards using DAX and SQL to analyze datasets,
-      track KPIs, and present insights as part of analytics coursework and projects.
-    </p>
-  </div>
+            <div class="mt-8 flex flex-wrap gap-2 text-xs font-medium">
+              <span class="rounded-full border border-[color:var(--line)] px-3 py-2">Azure Data Factory</span>
+              <span class="rounded-full border border-[color:var(--line)] px-3 py-2">Databricks / PySpark</span>
+              <span class="rounded-full border border-[color:var(--line)] px-3 py-2">SQL Tuning</span>
+              <span class="rounded-full border border-[color:var(--line)] px-3 py-2">Power BI / DAX</span>
+              <span class="rounded-full border border-[color:var(--line)] px-3 py-2">AI Workflows</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
-    <p class="text-sm font-semibold">Azure Data Engineering Projects</p>
-    <p class="mt-1 text-sm text-slate-600">
-      Built end-to-end data pipelines using Azure Data Factory and Databricks (PySpark),
-      implementing ingestion, transformation, and lakehouse-based workflows in academic projects.
-    </p>
-  </div>
+    <section id="about" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <div class="reveal">
+          <p class="section-label">About</p>
+          <h2 class="mt-3 font-display text-4xl font-bold tracking-tight">A developer mindset with a data delivery background.</h2>
+        </div>
 
-  <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
-    <p class="text-sm font-semibold">SQL & Data Modeling</p>
-    <p class="mt-1 text-sm text-slate-600">
-      Applied advanced SQL techniques including CTEs, joins, and window functions
-      to model data and support analytical reporting across academic projects.
-    </p>
-  </div>
-
-  <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
-    <p class="text-sm font-semibold">Python Automation & ETL</p>
-    <p class="mt-1 text-sm text-slate-600">
-      Developed Python-based ETL workflows for data cleaning, transformation,
-      and automation tasks as part of data engineering and analytics projects.
-    </p>
-  </div>
-
-</div>
-
-
-        <div class="mt-6 text-sm text-slate-600">
-          <p><span class="font-medium text-slate-900">Email:</span> <span id="emailText">shanmathyravisankaran03@gmail.com</span></p>
-          <p class="mt-1">
-            <span class="font-medium text-slate-900">LinkedIn:</span>
-            <a class="underline" href="https://www.linkedin.com/in/shanmathy03" target="_blank" rel="noreferrer">shanmathy03</a>
+        <div class="reveal glass-panel rounded-[2rem] p-8">
+          <p class="text-base leading-8 text-[color:var(--muted)]">
+            I completed my MS in Information Technology and Management at UT Dallas after working as an
+            Application Development Analyst at Accenture. My work sits at the intersection of engineering and
+            analytics: building ingestion pipelines, shaping clean data models, and exposing results through
+            dashboards or AI-assisted applications.
+          </p>
+          <p class="mt-4 text-base leading-8 text-[color:var(--muted)]">
+            The goal is consistent across projects: reduce noise, improve reliability, and deliver outputs that
+            teams can actually use in production or decision-making environments.
           </p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- About -->
-  <section id="about" class="bg-slate-50 border-y border-slate-100">
-    <div class="mx-auto max-w-6xl px-4 py-12">
-      <h2 class="text-2xl font-semibold tracking-tight">About</h2>
-      <p class="mt-3 text-slate-600 leading-relaxed max-w-3xl">
-        I have completed my MS in Information Technology & Management from UT Dallas and bring
-        2+ years of professional experience as an Application Development Analyst at Accenture, along with
-        hands-on project experience in data engineering and analytics.
-        <br><br>
-        My expertise includes building end-to-end data pipelines using Azure Data Factory and Databricks (PySpark),
-        optimizing large-scale SQL queries, and developing executive-ready dashboards in Power BI to support
-        data-driven decision-making.
-      </p>
-
-      <div class="mt-6 grid md:grid-cols-3 gap-4">
-        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-soft">
-          <h3 class="font-semibold">Data Engineering</h3>
-          <p class="mt-2 text-sm text-slate-600">ADF orchestration, Databricks/PySpark, Delta, lakehouse patterns.</p>
-        </div>
-        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-soft">
-          <h3 class="font-semibold">Analytics</h3>
-          <p class="mt-2 text-sm text-slate-600">Power BI dashboards, DAX KPIs, stakeholder-ready reporting.</p>
-        </div>
-        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-soft">
-          <h3 class="font-semibold">Software Foundation</h3>
-          <p class="mt-2 text-sm text-slate-600">Java services, JUnit automation, production issue resolution.</p>
-        </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        <article class="reveal glass-panel rounded-[1.75rem] p-6">
+          <h3 class="font-display text-xl font-bold">Engineering</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Orchestrating pipelines, implementing ETL patterns, and building repeatable cloud workflows.
+          </p>
+        </article>
+        <article class="reveal glass-panel rounded-[1.75rem] p-6">
+          <h3 class="font-display text-xl font-bold">Analytics</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Translating datasets into decision-ready reports, KPI models, and clear stakeholder views.
+          </p>
+        </article>
+        <article class="reveal glass-panel rounded-[1.75rem] p-6">
+          <h3 class="font-display text-xl font-bold">Applied AI</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Building practical AI interfaces where retrieval, automation, and analytics need to work together.
+          </p>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Experience -->
-  <section id="experience" class="mx-auto max-w-6xl px-4 py-12">
-    <h2 class="text-2xl font-semibold tracking-tight">Experience</h2>
-
-    <div class="mt-6 rounded-2xl border border-slate-200 p-6 shadow-soft">
-      <div class="flex flex-wrap items-center justify-between gap-2">
+    <section id="experience" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="reveal flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <h3 class="text-lg font-semibold">Accenture — Application Development Analyst</h3>
-          <p class="text-sm text-slate-600">Bangalore, India • Feb 2022 – Dec 2023</p>
+          <p class="section-label">Experience</p>
+          <h2 class="mt-3 font-display text-4xl font-bold tracking-tight">Professional delivery in production environments.</h2>
         </div>
-        <span class="text-xs rounded-full bg-slate-50 border border-slate-200 px-3 py-1">Telecom / 5G</span>
+        <p class="max-w-xl text-sm leading-7 text-[color:var(--muted)]">
+          Experience across enterprise systems, incident ownership, testing, and cross-team delivery coordination.
+        </p>
       </div>
 
-      <ul class="mt-4 space-y-2 text-sm text-slate-700 list-disc pl-5">
-        <li>Led end-to-end delivery for telecom/5G integration work, improving network performance by 30% and reducing latency by 15% through coordinated configuration, validation, and production readiness activities.</li>
-        <li>Built and enhanced Java services and implemented automated JUnit test suites, increasing functional reliability to 95% and reducing regression defects through consistent test coverage.</li>
-        <li>Owned incident triage and root-cause analysis for production issues; resolved 95% of high-priority defects within SLAs, reducing delivery risk and minimizing downtime.</li>
-        <li>Partnered with cross-functional teams (QA, DevOps, and stakeholders) to document processes and deliver knowledge-transfer sessions, improving support efficiency and reducing resolution time by 30%.</li>
-        <li>Improved delivery timelines by 20% by streamlining handoffs, standardizing troubleshooting playbooks, and proactively identifying recurring failure patterns.</li>
-      </ul>
+      <div class="mt-8 space-y-6">
+        <article class="reveal glass-panel-strong rounded-[2rem] p-8 shadow-panel">
+          <div class="flex flex-col gap-4 border-b border-[color:var(--line)] pb-6 md:flex-row md:items-start md:justify-between">
+            <div>
+              <h3 class="font-display text-2xl font-bold">Cognizant</h3>
+              <p class="mt-1 text-base text-[color:var(--muted)]">AI Engineer</p>
+              <p class="mt-2 text-sm text-[color:var(--muted)]">USA | Feb 2026 - Present</p>
+            </div>
+            <span class="w-fit rounded-full border border-[color:var(--line)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">
+              AI / ML Systems
+            </span>
+          </div>
 
-      <div class="mt-5 grid md:grid-cols-2 gap-4">
-        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
-          <p class="text-sm font-semibold">Analytics contributions</p>
-          <p class="mt-1 text-sm text-slate-600">
-            Built 15+ Power BI dashboards and automated ETL workflows using Python + SQL to save 14+ hours/week.
-          </p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
-          <p class="text-sm font-semibold">Data engineering contributions</p>
-          <p class="mt-1 text-sm text-slate-600">
-            Implemented advanced SQL (CTEs/window functions), semantic views for Power BI, and optimized performance for faster loads.
-          </p>
-        </div>
+          <div class="mt-6 grid gap-4 md:grid-cols-2">
+            <div class="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--bg-muted)] p-5">
+              <p class="text-sm font-semibold">Pipeline engineering</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+                Designing ML-ready data pipelines using Python, Pandas, and NumPy to improve data readiness and feature availability by 30%.
+              </p>
+            </div>
+            <div class="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--bg-muted)] p-5">
+              <p class="text-sm font-semibold">Inference systems</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+                Developing and optimizing Flask-based RESTful backend services for real-time ingestion and model inference workflows.
+              </p>
+            </div>
+          </div>
+
+          <ul class="mt-8 grid gap-4 text-sm leading-7 text-[color:var(--muted)] md:grid-cols-2">
+            <li class="rounded-[1.5rem] border border-[color:var(--line)] p-5">
+              Designing ML-ready data pipelines using Python (Pandas, NumPy), improving data readiness and feature availability for modeling by 30%.
+            </li>
+            <li class="rounded-[1.5rem] border border-[color:var(--line)] p-5">
+              Developing and optimizing RESTful backend services via Flask for real-time data ingestion and model inference workflows.
+            </li>
+            <li class="rounded-[1.5rem] border border-[color:var(--line)] p-5">
+              Advanced data preprocessing including imputation, categorical encoding, and feature scaling for predictive models.
+            </li>
+            <li class="rounded-[1.5rem] border border-[color:var(--line)] p-5">
+              Building rule-based and ML-assisted validation mechanisms that reduce inconsistencies and improve system accuracy by 25%.
+            </li>
+            <li class="rounded-[1.5rem] border border-[color:var(--line)] p-5 md:col-span-2">
+              Translating business requirements into measurable KPIs and AI-driven insights with product managers and engineering teams.
+            </li>
+          </ul>
+        </article>
+
+        <article class="reveal glass-panel-strong rounded-[2rem] p-8 shadow-panel">
+          <div class="flex flex-col gap-4 border-b border-[color:var(--line)] pb-6 md:flex-row md:items-start md:justify-between">
+            <div>
+              <h3 class="font-display text-2xl font-bold">Accenture</h3>
+              <p class="mt-1 text-base text-[color:var(--muted)]">Application Development Analyst</p>
+              <p class="mt-2 text-sm text-[color:var(--muted)]">India | May 2021 - Dec 2023</p>
+            </div>
+            <span class="w-fit rounded-full border border-[color:var(--line)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">
+              Telecom / Analytics
+            </span>
+          </div>
+
+          <div class="mt-6 grid gap-4 md:grid-cols-2">
+            <div class="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--bg-muted)] p-5">
+              <p class="text-sm font-semibold">Data analysis</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+                Analyzed large-scale telecom datasets with SQL and Python for proactive performance monitoring and faster issue visibility.
+              </p>
+            </div>
+            <div class="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--bg-muted)] p-5">
+              <p class="text-sm font-semibold">Reporting and automation</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+                Built Power BI dashboards and end-to-end automation pipelines that improved reporting speed and saved weekly manual effort.
+              </p>
+            </div>
+          </div>
+
+          <ul class="mt-8 grid gap-4 text-sm leading-7 text-[color:var(--muted)] md:grid-cols-2">
+            <li class="rounded-[1.5rem] border border-[color:var(--line)] p-5">
+              Analyzed large-scale telecom datasets (millions of records) using SQL and Python for proactive network performance monitoring.
+            </li>
+            <li class="rounded-[1.5rem] border border-[color:var(--line)] p-5">
+              Designed enterprise-grade Power BI dashboards with DAX, improving decision-making speed and reporting efficiency by 30%.
+            </li>
+            <li class="rounded-[1.5rem] border border-[color:var(--line)] p-5">
+              Engineered end-to-end automation pipelines for data extraction, validation, and reporting, saving 14+ hours per week.
+            </li>
+            <li class="rounded-[1.5rem] border border-[color:var(--line)] p-5">
+              Led root-cause analysis of critical production incidents, achieving a 95% SLA resolution rate.
+            </li>
+            <li class="rounded-[1.5rem] border border-[color:var(--line)] p-5 md:col-span-2">
+              Defined scalable KPIs and data quality frameworks in partnership with engineering, QA, and operations teams.
+            </li>
+          </ul>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects -->
-  <section id="projects" class="bg-slate-50 border-y border-slate-100">
-    <div class="mx-auto max-w-6xl px-4 py-12">
-      <div class="flex flex-wrap items-end justify-between gap-3">
+    <section id="projects" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="reveal flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <h2 class="text-2xl font-semibold tracking-tight">Projects</h2>
-          <p class="mt-2 text-slate-600 text-sm">Replace the links with your GitHub repo URLs.</p>
+          <p class="section-label">Projects</p>
+          <h2 class="mt-3 font-display text-4xl font-bold tracking-tight">Selected builds across analytics, AI, and platform tooling.</h2>
         </div>
-        <a class="text-sm underline" href="https://github.com/shanmathy-ravisankaran" target="_blank" rel="noreferrer">
-          See all on GitHub →
+        <a
+          href="https://github.com/shanmathy-ravisankaran"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="text-sm font-semibold text-[color:var(--accent)] transition hover:opacity-80"
+        >
+          View GitHub Profile
         </a>
       </div>
 
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
+      <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Analytics</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">Promo Segmentation Analytics</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Measured repeat rate, profit, discount, and order value patterns across customer segments to identify high-impact promotions.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Python</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">EDA</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Visualization</span>
+          </div>
+          <a
+            class="mt-5 inline-flex text-sm font-semibold text-[color:var(--text)]"
+            href="https://github.com/shanmathy-ravisankaran/promo-segmentation-analytics"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open Repository
+          </a>
+        </article>
 
-  <!-- Promo Segmentation Analytics -->
-  <article class="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-soft">
-    <img
-      src="assets/projects/promo/repeat-rate.png"
-      alt="Promo segmentation analytics"
-      class="w-full h-44 object-cover"
-    />
-    <div class="p-5">
-      <h3 class="font-semibold text-lg">Promo Segmentation Analytics</h3>
-      <p class="mt-2 text-sm text-slate-600">
-        Analyzed promotional performance across customer segments by comparing repeat rate,
-        profit, order value, and discount trends across multiple years to identify high-impact segments.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-2 text-xs">
-        <span class="rounded-full bg-slate-50 border px-3 py-1">Python</span>
-        <span class="rounded-full bg-slate-50 border px-3 py-1">EDA</span>
-        <span class="rounded-full bg-slate-50 border px-3 py-1">Visualization</span>
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Business Intelligence</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">Telco Churn Dashboard</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Developed a Power BI dashboard for churn, contract type, service usage, and revenue KPIs with interactive drill-down views.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Power BI</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">DAX</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Data Modeling</span>
+          </div>
+          <a
+            class="mt-5 inline-flex text-sm font-semibold text-[color:var(--text)]"
+            href="https://github.com/shanmathy-ravisankaran/telco-churn-powerbi-dashboard"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open Repository
+          </a>
+        </article>
+
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Data Engineering</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">Formula 1 Azure Pipeline</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Built a raw-to-presentation data pipeline using Ergast API, ADF, Databricks, Delta Lake, and Power BI reporting layers.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">ADF</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Databricks</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">PySpark</span>
+          </div>
+          <a
+            class="mt-5 inline-flex text-sm font-semibold text-[color:var(--text)]"
+            href="https://github.com/shanmathy-ravisankaran/Formula-1-Data-Engineering-Project-Azure-Databricks-Delta-Lake-ADF"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open Repository
+          </a>
+        </article>
+
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Applied AI</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">Cosmetic Chemical Intelligence</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Created a RAG assistant that retrieves safety guidance from regulatory sources and returns cited responses through Streamlit.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">LangChain</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">RAG</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Vector DB</span>
+          </div>
+          <a
+            class="mt-5 inline-flex text-sm font-semibold text-[color:var(--text)]"
+            href="https://github.com/shanmathy-ravisankaran/cosmetic-ai-project"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open Repository
+          </a>
+        </article>
+
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">AI Analytics</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">Strategiz AI Analytics Agent</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Built a conversational assistant that converts business questions into SQL and visualization-ready analytics outputs.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">LLM Agents</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">SQL Generation</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Streamlit</span>
+          </div>
+          <a
+            class="mt-5 inline-flex text-sm font-semibold text-[color:var(--text)]"
+            href="https://github.com/shanmathy-ravisankaran/strategiz-agent"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open Repository
+          </a>
+        </article>
+
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Developer Tooling</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">Doclify CLI</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Developed an AI-powered CLI that analyzes repositories and generates professional README documentation with configurable workflows.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Python</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">CLI</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Automation</span>
+          </div>
+          <a
+            class="mt-5 inline-flex text-sm font-semibold text-[color:var(--text)]"
+            href="https://github.com/shanmathy-ravisankaran/Doclify"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open Repository
+          </a>
+        </article>
+
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Autonomous Content Systems</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">BlogBoard</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Built an autonomous multi-agent blogging platform that schedules, generates, and publishes AI and ML articles with orchestration and CI automation.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Python</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">LangGraph</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">CI/CD</span>
+          </div>
+          <a
+            class="mt-5 inline-flex text-sm font-semibold text-[color:var(--text)]"
+            href="https://github.com/shanmathy-ravisankaran/Multi-Agentic-Blog-Generation"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open Repository
+          </a>
+        </article>
+
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Machine Learning</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">Heart Disease Prediction System</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Built a predictive system for heart disease risk assessment with model experimentation, tracking, versioning, and Flask-based delivery.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Scikit-learn</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">MLflow</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">Flask</span>
+          </div>
+          <a
+            class="mt-5 inline-flex text-sm font-semibold text-[color:var(--text)]"
+            href="https://github.com/shanmathy-ravisankaran/Heart-Disease-Prediction"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open Repository
+          </a>
+        </article>
+
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Machine Learning</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">Airbnb Price Prediction System</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Developed an end-to-end Airbnb pricing pipeline using market and property data with experiment-driven modeling and real-time prediction delivery.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">XGBoost</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">CatBoost</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">DVC</span>
+          </div>
+          <a
+            class="mt-5 inline-flex text-sm font-semibold text-[color:var(--text)]"
+            href="https://github.com/shanmathy-ravisankaran/airbnb-price-prediction"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open Repository
+          </a>
+        </article>
+
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Full Stack AI</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">Market Insight</h3>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Built an AI-driven stock analysis platform with a conversational interface, agent workflows, and real-time financial data integration.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">FastAPI</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">React</span>
+            <span class="rounded-full bg-[color:var(--accent-soft)] px-3 py-2">OpenAI</span>
+          </div>
+          <a
+            class="mt-5 inline-flex text-sm font-semibold text-[color:var(--text)]"
+            href="https://github.com/shanmathy-ravisankaran/MarketInsight"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open Repository
+          </a>
+        </article>
       </div>
-      <a class="mt-4 inline-block text-sm underline" href="https://github.com/shanmathy-ravisankaran/promo-segmentation-analytics" target="_blank">Repo →</a>
-    </div>
-  </article>
+    </section>
 
-  <!-- Telco Churn Dashboard -->
-  <article class="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-soft">
-    <img
-      src="assets/projects/telco/revenue-dashboard.png"
-      alt="Telco churn dashboard"
-      class="w-full h-44 object-cover"
-    />
-    <div class="p-5">
-      <h3 class="font-semibold text-lg">Telco Churn & Revenue Dashboard</h3>
-      <p class="mt-2 text-sm text-slate-600">
-        Built an interactive Power BI dashboard to analyze churn rate, service usage,
-        contract types, and revenue KPIs with slicers for drill-down insights.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-2 text-xs">
-        <span class="rounded-full bg-slate-50 border px-3 py-1">Power BI</span>
-        <span class="rounded-full bg-slate-50 border px-3 py-1">DAX</span>
-        <span class="rounded-full bg-slate-50 border px-3 py-1">Data Analysis</span>
-      </div>
-      <a class="mt-4 inline-block text-sm underline" href="https://github.com/shanmathy-ravisankaran/telco-churn-powerbi-dashboard" target="_blank">Repo →</a>
-    </div>
-  </article>
-
-  <!-- Formula 1 Data Engineering -->
-  <article class="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-soft">
-    <img
-      src="assets/projects/f1/f1-architecture.png"
-      alt="Formula 1 data engineering architecture"
-      class="w-full h-44 object-cover"
-    />
-    <div class="p-5">
-      <h3 class="font-semibold text-lg">Formula 1 Data Engineering Pipeline</h3>
-      <p class="mt-2 text-sm text-slate-600">
-        Designed an end-to-end Azure pipeline using the Ergast API, ADF, and Databricks (PySpark),
-        with raw → transformed → presentation layers and Power BI reporting for drivers and teams.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-2 text-xs">
-        <span class="rounded-full bg-slate-50 border px-3 py-1">ADF</span>
-        <span class="rounded-full bg-slate-50 border px-3 py-1">Databricks</span>
-        <span class="rounded-full bg-slate-50 border px-3 py-1">PySpark</span>
-        <span class="rounded-full bg-slate-50 border px-3 py-1">Power BI</span>
-      </div>
-      <a class="mt-4 inline-block text-sm underline" href="https://github.com/shanmathy-ravisankaran/Formula-1-Data-Engineering-Project-Azure-Databricks-Delta-Lake-ADF" target="_blank">Repo →</a>
-    </div>
-  </article>
-
-<!-- Cosmetic Chemical Intelligence AI -->
-<article class="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-soft">
-  <img
-    src="assets/projects/cosmetic/cosmetic-ai.png"
-    alt="Cosmetic chemical intelligence AI assistant"
-    class="w-full h-44 object-cover"
-  />
-  <div class="p-5">
-    <h3 class="font-semibold text-lg">Cosmetic Chemical Intelligence (AI RAG)</h3>
-    <p class="mt-2 text-sm text-slate-600">
-      Built an AI-powered knowledge assistant that answers cosmetic ingredient
-      safety questions using Retrieval Augmented Generation (RAG). The system
-      retrieves information from regulatory documents and provides cited answers
-      through an interactive Streamlit interface.
-    </p>
-
-    <div class="mt-4 flex flex-wrap gap-2 text-xs">
-      <span class="rounded-full bg-slate-50 border px-3 py-1">Python</span>
-      <span class="rounded-full bg-slate-50 border px-3 py-1">LangChain</span>
-      <span class="rounded-full bg-slate-50 border px-3 py-1">Vector DB</span>
-      <span class="rounded-full bg-slate-50 border px-3 py-1">Streamlit</span>
-      <span class="rounded-full bg-slate-50 border px-3 py-1">RAG</span>
-    </div>
-
-    <a class="mt-4 inline-block text-sm underline"
-       href="https://github.com/shanmathy-ravisankaran/cosmetic-ai-project"
-       target="_blank">
-       Repo →
-    </a>
-  </div>
-</article>
-<!-- Strategiz AI Analytics Agent -->
-<article class="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-soft">
-  <img
-    src="assets/projects/strategiz/ai-dashboard.png"
-    alt="AI analytics dashboard agent"
-    class="w-full h-44 object-cover"
-  />
-  <div class="p-5">
-    <h3 class="font-semibold text-lg">Strategiz AI Analytics Agent</h3>
-    <p class="mt-2 text-sm text-slate-600">
-      Developed an AI analytics assistant that converts natural language
-      business questions into SQL queries and automatically generates
-      analytics dashboards with insights and visualizations using a
-      conversational interface.
-    </p>
-
-    <div class="mt-4 flex flex-wrap gap-2 text-xs">
-      <span class="rounded-full bg-slate-50 border px-3 py-1">Python</span>
-      <span class="rounded-full bg-slate-50 border px-3 py-1">LLM Agents</span>
-      <span class="rounded-full bg-slate-50 border px-3 py-1">SQL Generation</span>
-      <span class="rounded-full bg-slate-50 border px-3 py-1">Streamlit</span>
-      <span class="rounded-full bg-slate-50 border px-3 py-1">Analytics AI</span>
-    </div>
-
-    <a class="mt-4 inline-block text-sm underline"
-       href="https://github.com/shanmathy-ravisankaran/strategiz-agent"
-       target="_blank">
-       Repo →
-    </a>
-  </div>
-</article>
-</div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="mx-auto max-w-6xl px-4 py-12">
-    <h2 class="text-2xl font-semibold tracking-tight">Skills</h2>
-
-    <div class="mt-6 grid lg:grid-cols-3 gap-4">
-      <div class="rounded-2xl border border-slate-200 p-6 shadow-soft">
-        <h3 class="font-semibold">Data Engineering</h3>
-        <ul class="mt-3 text-sm text-slate-700 space-y-1">
-          <li>Azure Data Factory • Orchestration • Triggers</li>
-          <li>Databricks • PySpark • Delta Lake</li>
-          <li>ETL/ELT • Lakehouse • Data Modeling</li>
-        </ul>
+    <section id="skills" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <p class="section-label">Skills</p>
+        <h2 class="mt-3 font-display text-4xl font-bold tracking-tight">Tools I use to ship reliable systems.</h2>
       </div>
 
-      <div class="rounded-2xl border border-slate-200 p-6 shadow-soft">
-        <h3 class="font-semibold">Analytics</h3>
-        <ul class="mt-3 text-sm text-slate-700 space-y-1">
-          <li>Power BI • DAX • Power Query</li>
-          <li>KPI dashboards • Executive reporting</li>
-          <li>Data quality • Validation</li>
-        </ul>
+      <div class="mt-8 grid gap-5 lg:grid-cols-3">
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <h3 class="font-display text-2xl font-bold">Data Engineering</h3>
+          <ul class="mt-4 space-y-3 text-sm leading-7 text-[color:var(--muted)]">
+            <li>Azure Data Factory, pipeline orchestration, scheduling, and ingestion flows</li>
+            <li>Databricks, PySpark, Delta Lake, ETL and ELT implementation</li>
+            <li>Lakehouse patterns, schema design, and performance-oriented transformations</li>
+          </ul>
+        </article>
+
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <h3 class="font-display text-2xl font-bold">Analytics</h3>
+          <ul class="mt-4 space-y-3 text-sm leading-7 text-[color:var(--muted)]">
+            <li>Power BI, DAX, Power Query, executive reporting, and KPI modeling</li>
+            <li>Data validation, dashboard quality, and stakeholder-facing delivery</li>
+            <li>SQL-based reporting layers and semantic model support</li>
+          </ul>
+        </article>
+
+        <article class="reveal glass-panel rounded-[1.8rem] p-6">
+          <h3 class="font-display text-2xl font-bold">Programming</h3>
+          <ul class="mt-4 space-y-3 text-sm leading-7 text-[color:var(--muted)]">
+            <li>Python, SQL, Java, Pandas, automation scripts, and backend logic</li>
+            <li>Snowflake, Azure SQL, MySQL, MongoDB, and model-oriented query design</li>
+            <li>Applied AI workflows with retrieval, agents, and developer tooling</li>
+          </ul>
+        </article>
       </div>
 
-      <div class="rounded-2xl border border-slate-200 p-6 shadow-soft">
-        <h3 class="font-semibold">Programming / Databases</h3>
-        <ul class="mt-3 text-sm text-slate-700 space-y-1">
-          <li>SQL (CTEs, window functions, tuning)</li>
-          <li>Python (Pandas automation)</li>
-          <li>Azure SQL • Snowflake • MySQL • MongoDB</li>
-        </ul>
+      <div class="reveal mt-8 rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--accent-soft)] p-6">
+        <p class="section-label">Certifications</p>
+        <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+          Azure Administrator (AZ-104), Azure Fundamentals (AZ-900), Power BI Data Analyst (PL-300), and SnowPro Associate.
+        </p>
       </div>
-    </div>
+    </section>
 
-    <div class="mt-8 rounded-2xl bg-slate-50 border border-slate-200 p-6">
-      <h3 class="font-semibold">Certifications</h3>
-      <p class="mt-2 text-sm text-slate-600">
-        Azure Administrator (AZ-104) • Azure Fundamentals (AZ-900) • Power BI Data Analyst (PL-300) • SnowPro Associate
-      </p>
-    </div>
-  </section>
+    <section id="contact" class="mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 lg:px-8">
+      <div class="reveal glass-panel-strong rounded-[2rem] p-8 shadow-panel sm:p-10">
+        <p class="section-label">Contact</p>
+        <h2 class="mt-3 max-w-2xl font-display text-4xl font-bold tracking-tight">
+          Interested in data engineering, analytics, or platform-focused developer work.
+        </h2>
+        <p class="mt-4 max-w-2xl text-base leading-8 text-[color:var(--muted)]">
+          Email is the fastest way to reach me. I am happy to share project walkthroughs, dashboards, or implementation details.
+        </p>
 
-  <!-- Contact -->
-  <section id="contact" class="bg-slate-50 border-t border-slate-100">
-    <div class="mx-auto max-w-6xl px-4 py-12">
-      <h2 class="text-2xl font-semibold tracking-tight">Contact</h2>
-      <p class="mt-2 text-slate-600 max-w-2xl">
-        Recruiters: the fastest way to reach me is email. I’m happy to share project walkthroughs and dashboard demos.
-      </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="mailto:shanmathyravisankaran03@gmail.com"
+            class="rounded-full bg-[color:var(--accent)] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+          >
+            Email Me
+          </a>
+          <a
+            href="https://github.com/shanmathy-ravisankaran"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="glass-panel rounded-full px-5 py-3 text-sm font-semibold text-[color:var(--text)] transition hover:-translate-y-0.5"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/shanmathy03"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="glass-panel rounded-full px-5 py-3 text-sm font-semibold text-[color:var(--text)] transition hover:-translate-y-0.5"
+          >
+            LinkedIn
+          </a>
+        </div>
 
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a class="rounded-xl bg-slate-900 text-white px-4 py-2 text-sm hover:opacity-90"
-           href="mailto:shanmathyravisankaran03@gmail.com">
-          Email Me
-        </a>
-        <a class="rounded-xl border border-slate-200 px-4 py-2 text-sm hover:bg-slate-50"
-           href="https://github.com/shanmathy-ravisankaran" target="_blank" rel="noreferrer">
-          GitHub
-        </a>
+        <div class="mt-8 grid gap-4 border-t border-[color:var(--line)] pt-6 text-sm text-[color:var(--muted)] sm:grid-cols-2">
+          <p><span class="font-semibold text-[color:var(--text)]">Email:</span> <span id="emailText">shanmathyravisankaran03@gmail.com</span></p>
+          <p><span class="font-semibold text-[color:var(--text)]">Location:</span> Dallas, TX / Bangalore, India</p>
+        </div>
+
+        <p class="mt-8 text-xs uppercase tracking-[0.18em] text-[color:var(--muted)]">
+          © <span id="year"></span> Shanmathy Ravisankaran
+        </p>
       </div>
-
-      <p class="mt-6 text-xs text-slate-500">
-        © <span id="year"></span> Shanmathy Ravisankaran. Built with a lightweight static site.
-      </p>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <script src="assets/script.js"></script>
 </body>
